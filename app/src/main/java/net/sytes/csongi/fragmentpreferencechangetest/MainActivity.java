@@ -12,11 +12,13 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
+    // declaring initial value for applying appropriate Theme
     private Boolean mOriginalCurrentValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       Log.d(TAG, "onCreate:::: retrieving preferences");
+        // Checking which Theme should be used. IMPORTANT: applying Themes MUST called BEFORE super.onCreate() and setContentView!!!
+        Log.d(TAG, "onCreate:::: retrieving preferences");
         SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mOriginalCurrentValue = mSharedPreferences.getBoolean("my_preference", false);
         Log.d(TAG, "onCreate:::: my_preference and mCurrentValue=" + mOriginalCurrentValue);
@@ -32,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button myButton = findViewById(R.id.btn_goto_preferences);
-        myButton.setOnClickListener(v -> openPreferences());
     }
 
+    // in order to recreate Activity we must check value here because when we come back from another Activity onCreate doesn't called again
     @Override
     protected void onStart() {
         super.onStart();
         setContentView(R.layout.activity_main);
         SharedPreferences mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         Boolean mNewValue = mSharedPreferences.getBoolean("my_preference", false);
+        // if value differs from previous Theme, we recreate Activity
         if(mOriginalCurrentValue!=mNewValue){
             recreate();
         }
