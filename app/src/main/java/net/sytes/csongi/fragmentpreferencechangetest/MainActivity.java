@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // ... do other stuff here
     }
 
     // in order to recreate Activity we must check value here because when we come back from another Activity onCreate doesn't called again
@@ -49,12 +50,13 @@ public class MainActivity extends AppCompatActivity {
         }
         Button myButton = findViewById(R.id.btn_goto_preferences);
         myButton.setOnClickListener(v -> openPreferences());
+
+        // ... do other stuff here
     }
 
+    // helper method for opening PreferenceActivity
     private void openPreferences() {
         Intent openPreferencesIntent = new Intent(MainActivity.this, PreferencesActivity.class);
         startActivity(openPreferencesIntent);
     }
-
-
 }

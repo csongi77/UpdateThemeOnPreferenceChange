@@ -35,8 +35,12 @@ public class PreferencesActivity extends AppCompatActivity implements Preference
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferences);
 
+        // .. do other stuff here
+
         Fragment preferenceFragment = new PreferenceExampleFragment();
         getFragmentManager().beginTransaction().add(R.id.preference_container, preferenceFragment).commit();
+
+
     }
 
     // callback method for changing preference. It's called only if "my_preference" has changed

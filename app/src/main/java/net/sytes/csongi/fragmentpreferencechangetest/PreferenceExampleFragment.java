@@ -30,6 +30,8 @@ public class PreferenceExampleFragment extends PreferenceFragment implements Pre
         CheckBoxPreference mCheckBoxPreference=(CheckBoxPreference)findPreference("my_preference");
         mCheckBoxPreference.setOnPreferenceChangeListener(this);
 
+        // ... other stuff
+
     }
 
     @Override
@@ -53,6 +55,7 @@ public class PreferenceExampleFragment extends PreferenceFragment implements Pre
             mPreferenceXchangeListener.onXchange((Boolean)newValue);
             return true;
         }
+        // ... check other preferences here
         return false;
     }
 
